@@ -19,18 +19,18 @@ public class HdivSecurityConfig extends HdivWebSecurityConfigurerAdapter {
 			.sessionExpired()
 				.homePage("/").loginPage("/login.html");
 	}
-	
+
 	@Override
 	public void addExclusions(ExclusionRegistry registry) {
 
 		registry.addUrlExclusions("/", "/login.html").method("GET");
 		registry.addUrlExclusions("/j_spring_security_check", "/logout.html").method("POST");
 		registry.addUrlExclusions("/attacks/.*");
-		
+
 		registry.addUrlExclusions("/resources/.*");
-		
+
 		registry.addParamExclusions("_csrf");
-		
+
 		registry.addParamExclusions("param1", "param2").forUrls("/attacks/.*");
 	}
 
@@ -44,6 +44,7 @@ public class HdivSecurityConfig extends HdivWebSecurityConfigurerAdapter {
 	public void configureEditableValidation(ValidationConfigurer validationConfigurer) {
 
 		validationConfigurer.addValidation("/secure/.*");
+		validationConfigurer.addValidation("/attacks/.*").disableDefaults();
 		validationConfigurer.addValidation("/safetext/.*").rules("safeText").disableDefaults();
 	}
 }
