@@ -1,6 +1,6 @@
 package org.hdiv.samples.mvc.config;
 
-import org.hdiv.web.multipart.HdivCommonsMultipartResolver;
+import org.hdiv.web.multipart.HdivStandardServletMultipartResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -41,8 +41,7 @@ public class SpringWebMvcConfig implements WebMvcConfigurer {
 
 	@Bean
 	public MultipartResolver multipartResolver() {
-		HdivCommonsMultipartResolver resolver = new HdivCommonsMultipartResolver();
-		return resolver;
+		return new HdivStandardServletMultipartResolver();
 	}
 
 }

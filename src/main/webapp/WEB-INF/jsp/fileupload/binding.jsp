@@ -28,6 +28,8 @@
 				<p>
 					<label for="search">Search:</label>
 					<form:input path="search"/>
+					
+					<form:errors path="search" cssStyle="color:red"/>
 				</p>
 				<form:hidden path="hiddenValue"/>
 				<p>
